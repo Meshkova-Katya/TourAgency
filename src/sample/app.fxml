@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomeController">
+    <children>
+        <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <Label layoutX="228.0" layoutY="65.0" prefHeight="44.0" prefWidth="166.0" text="Выберите тур:">
+                    <font>
+                        <Font name="Dubai Regular" size="25.0" />
+                    </font>
+                </Label>
+            <Button fx:id="bookNow" layoutX="206.0" layoutY="387.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="215.0" style="-fx-background-color: #FFA500; -fx-border-radius: 10;" text="Забронировать">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <RadioButton fx:id="radio1" layoutX="78.0" layoutY="150.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="274.0" text="Майами">
+               <font>
+                  <Font name="Dubai Regular" size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radio3" layoutX="78.0" layoutY="250.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="274.0" text="США">
+               <font>
+                  <Font name="Dubai Regular" size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radio2" layoutX="357.0" layoutY="150.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="237.0" text="Франция">
+               <font>
+                  <Font name="Dubai Regular" size="16.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radio4" layoutX="357.0" layoutY="250.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="238.0" text="Бали">
+               <font>
+                  <Font name="Dubai Regular" size="16.0" />
+               </font>
+            </RadioButton>
+            </children>
+        </AnchorPane>
+        <Label layoutX="217.0" layoutY="27.0" text="Лёгкий полёт">
+            <font>
+                <Font name="Dubai Regular" size="27.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

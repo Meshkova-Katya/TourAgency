@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Label layoutX="232.0" layoutY="42.0" prefHeight="37.0" prefWidth="158.0" text="Авторизация">
+               <font>
+                  <Font name="Dubai Regular" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="loginField" layoutX="204.0" layoutY="135.0" prefHeight="26.0" prefWidth="215.0" promptText="Логин" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
+            <PasswordField fx:id="passField" layoutX="204.0" layoutY="181.0" prefHeight="26.0" prefWidth="215.0" promptText="Пароль" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
+            <Button fx:id="signUpButton" layoutX="204.0" layoutY="347.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="215.0" style="-fx-background-color: #FFA500; -fx-border-radius: 10;" text="Зарегестрироваться">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="loginButton" layoutX="204.0" layoutY="271.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="215.0" style="-fx-background-color: #FFA500; -fx-border-radius: 10;" text="Войти">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="217.0" layoutY="27.0" text="Лёгкий полёт">
+         <font>
+            <Font name="Dubai Regular" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
