@@ -39,10 +39,10 @@ public class Controller {
     void initialize() {
 
         loginButton.setOnAction(event -> {
-            String loginText = loginButton.getText().trim();
-            String loginPassword = passField.getText().trim();
-            if (!loginText.equals("") && !loginPassword.equals("")) {
-                loginUser(loginText, loginPassword);
+            String login = loginField.getText().trim();
+            String password = passField.getText().trim();
+            if (!login.equals("") && !password.equals("")) {
+                loginUser(login, password);
             } else {
                 System.out.println("Login and password is empty");
             }
@@ -68,11 +68,11 @@ public class Controller {
 
     }
 
-    private void loginUser(String loginText, String loginPassword) {
+    private void loginUser(String login, String password) {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = new User();
-        user.setLogin(loginText);
-        user.setPassword(loginPassword);
+        user.setLogin(login);
+        user.setPassword(password);
         ResultSet result = dbHandler.getUser(user);
 
         int counter = 0;

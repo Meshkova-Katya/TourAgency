@@ -47,11 +47,11 @@ public class DatabaseHandler extends Configs {
             prSt.setString(1, user.getLogin());
             prSt.setString(2, user.getPassword());
 
-
-           resSet =  prSt.executeQuery(); // Взять из бд
+            resSet = prSt.executeQuery(); // Взять из бд
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Нет такого пользователя!");
+
         }
-return resSet;
+        return resSet;
     }
 }
