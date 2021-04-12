@@ -70,27 +70,12 @@ public class Controller {
 
     private void loginUser(String login, String password) {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
-        ResultSet result = dbHandler.getUser(user);
-
-        int counter = 0;
-
-
-            try {
-                while (result.next()) {
-                    counter++;
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-
-            if (counter >= 1) {
-                System.out.println("Success!");
-            }
+        boolean result = dbHandler.login(login, password);
+        if (result) {
+            System.out.println("Success!");
+        } else {
+            System.out.println("Такого пользователя не существует!");
+        }
 
     }
 }

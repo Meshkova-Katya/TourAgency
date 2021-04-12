@@ -1,13 +1,18 @@
 package sample;
 
+
+
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class SignUpController {
 
+
+public class SignUpController {
+    static  boolean  result = false;
     @FXML
     private ResourceBundle resources;
 
@@ -41,18 +46,19 @@ public class SignUpController {
     @FXML
     private ToggleGroup group;
 
-
     @FXML
     void initialize() {
 
 
         signUpLoginButton.setOnAction(event -> {
-            signUpNewUser();
+        signUpNewUser();
 
         });
     }
 
+
     private void signUpNewUser() {
+
         DatabaseHandler dbHandler = new DatabaseHandler();
         String firstName = nameField.getText();
         String lastName = surnameField.getText();
@@ -65,7 +71,14 @@ public class SignUpController {
         } else {
             gender = "Женский";
         }
-        User user = new User(firstName, lastName, login,password,  location, gender);
-        dbHandler.signUpUser(user);
+
+
+        User user = new User(firstName, lastName, login, password, location, gender);
+        try {
+            dbHandler.signUpUser(user);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 }

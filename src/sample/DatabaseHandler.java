@@ -1,13 +1,13 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+
+import java.sql.*;
 
 public class DatabaseHandler extends Configs {
+
     Connection dbConnection;
+
+
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String url = "jdbc:mysql://localhost/touragency?serverTimezone=Europe/Moscow&useSSL=false";
@@ -18,7 +18,8 @@ public class DatabaseHandler extends Configs {
         return dbConnection;
     }
 
-    public void signUpUser(User user) {
+    public void signUpUser(User user) throws SQLException {
+
         String insert = "INSERT INTO " + Const.USER_TABLE + " ( " + Const.USER_FIRSTNAME + ", " + Const.USER_LASTNAME + "," +
                 Const.USER_LOGIN + ", " + Const.USER_PASSWORD + ", " + Const.USER_LOCATION + ", " + Const.USER_GENDER + ") " + "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -33,25 +34,33 @@ public class DatabaseHandler extends Configs {
                 prSt.setString(6, user.getGender());
 
                 prSt.executeUpdate(); // Добавляет в бд
+                System.out.println("Новый пользователь зарегистрирован!");
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Пользователь с таким логином уже создан!");
+            return;
         }
     }
 
-    public ResultSet getUser(User user) {
-        ResultSet resSet = null;
-        String select = "SELECT * FROM " + Const.USER_TABLE + "WHERE " +
+    public boolean login(String login, String password) {
+
+        boolean result = false;
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " +
                 Const.USER_LOGIN + "=? AND " + Const.USER_PASSWORD + "=?";
         try (PreparedStatement prSt = getDbConnection().prepareStatement(select)) {
-            prSt.setString(1, user.getLogin());
-            prSt.setString(2, user.getPassword());
+            prSt.setString(1, login);
+            prSt.setString(2, password);
 
-            resSet = prSt.executeQuery(); // Взять из бд
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Нет такого пользователя!");
 
+            ResultSet resultSet = prSt.executeQuery();
+
+            while (resultSet.next()) {
+                result = true;
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return resSet;
+        return result;
     }
 }
