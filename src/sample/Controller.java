@@ -2,6 +2,8 @@ package sample;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -38,8 +40,8 @@ public class Controller {
 
         loginButton.setOnAction(event -> {
             String loginText = loginButton.getText().trim();
-            String loginPassword =  passField.getText().trim();
-            if(!loginText.equals("") && !loginPassword.equals("")){
+            String loginPassword = passField.getText().trim();
+            if (!loginText.equals("") && !loginPassword.equals("")) {
                 loginUser(loginText, loginPassword);
             } else {
                 System.out.println("Login and password is empty");
@@ -67,6 +69,28 @@ public class Controller {
     }
 
     private void loginUser(String loginText, String loginPassword) {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        User user = new User();
+        user.setLogin(loginText);
+        user.setPassword(loginPassword);
+        ResultSet result = dbHandler.getUser(user);
+
+        int counter = 0;
+
+
+            try {
+                while (result.next()) {
+                    counter++;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+            if (counter >= 1) {
+                System.out.println("Success!");
+            }
 
     }
 }

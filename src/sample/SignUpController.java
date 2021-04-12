@@ -4,10 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class SignUpController {
 
@@ -42,13 +39,33 @@ public class SignUpController {
     private RadioButton radioFemale;
 
     @FXML
+    private ToggleGroup group;
+
+
+    @FXML
     void initialize() {
 
-        DatabaseHandler dbHandler = new DatabaseHandler();
 
         signUpLoginButton.setOnAction(event -> {
-            dbHandler.signUpUser(nameField.getText(), surnameField.getText(), loginField2.getText(), passField2.getText(),
-                    locationField.getText(), "Male");
+            signUpNewUser();
+
         });
+    }
+
+    private void signUpNewUser() {
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        String firstName = nameField.getText();
+        String lastName = surnameField.getText();
+        String login = loginField2.getText();
+        String password = passField2.getText();
+        String location = locationField.getText();
+        String gender = "";
+        if (group.getSelectedToggle().equals(radioMale)) {
+            gender = "Мужской";
+        } else {
+            gender = "Женский";
+        }
+        User user = new User(firstName, lastName, login,password,  location, gender);
+        dbHandler.signUpUser(user);
     }
 }
