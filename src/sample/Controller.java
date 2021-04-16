@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 public class Controller {
 
+
     @FXML
     private ResourceBundle resources;
 
@@ -72,7 +73,23 @@ public class Controller {
         DatabaseHandler dbHandler = new DatabaseHandler();
         boolean result = dbHandler.login(login, password);
         if (result) {
-            System.out.println("Success!");
+            System.out.println("Вы успешно вошли в систему!");
+
+            loginButton.getScene().getWindow().hide(); // закрытие текущего окна
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/app.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); // чтобы подождал
+
         } else {
             System.out.println("Такого пользователя не существует!");
         }

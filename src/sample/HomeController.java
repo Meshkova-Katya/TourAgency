@@ -2,9 +2,12 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+
+import static sample.SignUpController.*;
 
 public class HomeController {
 
@@ -31,9 +34,9 @@ public class HomeController {
 
     @FXML
     void initialize() {
-        radio1.setOnAction(event -> radio1.setText("Майами - " + SignUpController.loc));
-        radio2.setOnAction(event -> radio1.setText("Франция - " + SignUpController.loc));
-        radio1.setOnAction(event -> radio1.setText("США - " + SignUpController.loc));
-        radio2.setOnAction(event -> radio1.setText("Бали - " + SignUpController.loc));
+       radio1.setText("Майами - " + DatabaseHandler.loc);
+        radio2.setText("Франция - " + DatabaseHandler.loc);
+        radio3.setText("США - " + DatabaseHandler.loc);
+        radio4.setText("Бали - " + DatabaseHandler.loc);
     }
 }

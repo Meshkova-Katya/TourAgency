@@ -6,8 +6,7 @@ import java.sql.*;
 public class DatabaseHandler extends Configs {
 
     Connection dbConnection;
-
-
+    public static String loc;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String url = "jdbc:mysql://localhost/touragency?serverTimezone=Europe/Moscow&useSSL=false";
@@ -35,6 +34,7 @@ public class DatabaseHandler extends Configs {
 
                 prSt.executeUpdate(); // Добавляет в бд
                 System.out.println("Новый пользователь зарегистрирован!");
+
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Пользователь с таким логином уже создан!");
@@ -47,11 +47,18 @@ public class DatabaseHandler extends Configs {
         boolean result = false;
         String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " +
                 Const.USER_LOGIN + "=? AND " + Const.USER_PASSWORD + "=?";
+
         try (PreparedStatement prSt = getDbConnection().prepareStatement(select)) {
             prSt.setString(1, login);
             prSt.setString(2, password);
-
-
+            /**
+             Statement stm = dbConnection.createStatement();
+             String query = "select location from users";
+             ResultSet rs = stm.executeQuery(query);
+             while (rs.next()) {
+             loc = rs.getString(1);
+             }
+             */
             ResultSet resultSet = prSt.executeQuery();
 
             while (resultSet.next()) {
