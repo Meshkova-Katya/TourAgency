@@ -2,6 +2,7 @@ package sample;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -18,7 +19,7 @@ public class FinishController {
 
     @FXML
     void initialize() {
-
+        text.setText("В течении недели Вы можете приобрести их в городе " + DatabaseHandler.USER.getLocation());
 
     }
 }

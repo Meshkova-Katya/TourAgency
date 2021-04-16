@@ -88,21 +88,7 @@ public class SignUpController {
 
         signUpLoginButton.setOnAction(event -> {
             signUpNewUser();
-            signUpLoginButton.getScene().getWindow().hide(); // закрытие текущего окна
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/sample.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait(); // чтобы подождал
-
+            StageHolder.getSignUpController().close();
         });
     }
 

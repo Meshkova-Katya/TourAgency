@@ -18,9 +18,9 @@
                   <Font name="Dubai Regular" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="text" alignment="CENTER" layoutX="35.0" layoutY="206.0" prefHeight="106.0" prefWidth="530.0" text="В течении недели Вы можнете приобрести их в городе&#10; &#10;&#10;&#10; ">
+            <Label fx:id="text" alignment="CENTER" layoutX="-1.0" layoutY="206.0" prefHeight="106.0" prefWidth="600.0" text="В течении недели Вы можнете приобрести их в городе&#10; &#10;&#10;&#10; " textAlignment="JUSTIFY">
                <font>
-                  <Font name="Dubai Regular" size="18.0" />
+                  <Font name="Dubai Regular" size="16.0" />
                </font>
             </Label>
             <Label layoutX="191.0" layoutY="345.0" text="Спасибо, что выбрали нас!">

@@ -51,14 +51,6 @@ public class DatabaseHandler extends Configs {
         try (PreparedStatement prSt = getDbConnection().prepareStatement(select)) {
             prSt.setString(1, login);
             prSt.setString(2, password);
-            /**
-             Statement stm = dbConnection.createStatement();
-             String query = "select location from users";
-             ResultSet rs = stm.executeQuery(query);
-             while (rs.next()) {
-             loc = rs.getString(1);
-             }
-             */
             ResultSet resultSet = prSt.executeQuery();
 
             while (resultSet.next()) {
