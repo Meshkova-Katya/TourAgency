@@ -31,6 +31,9 @@ public class HomeController {
 
     @FXML
     void initialize() {
-
+        radio1.setOnAction(event -> radio1.setText("Майами - " + SignUpController.loc));
+        radio2.setOnAction(event -> radio1.setText("Франция - " + SignUpController.loc));
+        radio1.setOnAction(event -> radio1.setText("США - " + SignUpController.loc));
+        radio2.setOnAction(event -> radio1.setText("Бали - " + SignUpController.loc));
     }
 }

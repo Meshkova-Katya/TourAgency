@@ -1,7 +1,6 @@
 package sample;
 
 
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -10,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 
-
 public class SignUpController {
-    static  boolean  result = false;
+    static String loc = "";
+    static boolean result = false;
     @FXML
     private ResourceBundle resources;
 
@@ -51,7 +50,7 @@ public class SignUpController {
 
 
         signUpLoginButton.setOnAction(event -> {
-        signUpNewUser();
+            signUpNewUser();
 
         });
     }
@@ -76,6 +75,7 @@ public class SignUpController {
         User user = new User(firstName, lastName, login, password, location, gender);
         try {
             dbHandler.signUpUser(user);
+            loc = location;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
