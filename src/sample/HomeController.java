@@ -1,8 +1,5 @@
 package sample;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
-import static sample.SignUpController.*;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class HomeController {
 
@@ -38,9 +37,25 @@ public class HomeController {
 
     @FXML
     void initialize() {
-       radio1.setText("Майами - " + DatabaseHandler.loc);
-        radio2.setText("Франция - " + DatabaseHandler.loc);
-        radio3.setText("США - " + DatabaseHandler.loc);
-        radio4.setText("Бали - " + DatabaseHandler.loc);
+        radio1.setText("Майами - " + DatabaseHandler.USER.getLocation());
+        radio2.setText("Франция - " + DatabaseHandler.USER.getLocation());
+        radio3.setText("США - " + DatabaseHandler.USER.getLocation());
+        radio4.setText("Бали - " + DatabaseHandler.USER.getLocation());
+
+        bookNow.setOnAction(event -> {
+            bookNow.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("textApp.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
     }
 }

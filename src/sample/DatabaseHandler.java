@@ -3,10 +3,12 @@ package sample;
 
 import java.sql.*;
 
+import static sample.Const.*;
+
 public class DatabaseHandler extends Configs {
 
     Connection dbConnection;
-    public static String loc;
+    public static User USER;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String url = "jdbc:mysql://localhost/touragency?serverTimezone=Europe/Moscow&useSSL=false";
@@ -19,9 +21,8 @@ public class DatabaseHandler extends Configs {
 
     public void signUpUser(User user) throws SQLException {
 
-        String insert = "INSERT INTO " + Const.USER_TABLE + " ( " + Const.USER_FIRSTNAME + ", " + Const.USER_LASTNAME + "," +
-                Const.USER_LOGIN + ", " + Const.USER_PASSWORD + ", " + Const.USER_LOCATION + ", " + Const.USER_GENDER + ") " + "VALUES (?, ?, ?, ?, ?, ?)";
-
+        String insert = "INSERT INTO " + USER_TABLE + " ( " + USER_FIRSTNAME + ", " + USER_LASTNAME + "," +
+                USER_LOGIN + ", " + USER_PASSWORD + ", " + USER_LOCATION + ", " + USER_GENDER + ") " + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             try (PreparedStatement prSt = getDbConnection().prepareStatement(insert)) {
@@ -42,11 +43,10 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public boolean login(String login, String password) {
-
-        boolean result = false;
-        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " +
-                Const.USER_LOGIN + "=? AND " + Const.USER_PASSWORD + "=?";
+    public User login(String login, String password) {
+        User user = null;
+        String select = "SELECT * FROM " + USER_TABLE + " WHERE " +
+                USER_LOGIN + "=? AND " + USER_PASSWORD + "=?";
 
         try (PreparedStatement prSt = getDbConnection().prepareStatement(select)) {
             prSt.setString(1, login);
@@ -54,12 +54,17 @@ public class DatabaseHandler extends Configs {
             ResultSet resultSet = prSt.executeQuery();
 
             while (resultSet.next()) {
-                result = true;
-
+                user = new User();
+                user.setFirstName(USER_FIRSTNAME);
+                user.setLastName(USER_LASTNAME);
+                user.setGender(USER_GENDER);
+                user.setLocation(resultSet.getString(USER_LOCATION));
+                USER = user;
+                break;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        return user;
     }
 }

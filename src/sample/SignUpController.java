@@ -84,8 +84,6 @@ public class SignUpController {
     }
     @FXML
     void initialize() {
-
-
         signUpLoginButton.setOnAction(event -> {
             signUpNewUser();
             StageHolder.getSignUpController().close();

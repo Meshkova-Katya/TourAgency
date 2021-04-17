@@ -48,29 +48,15 @@ public class Controller {
         });
 
         signUpButton.setOnAction(event -> {
-            signUpButton.getScene().getWindow().hide(); // закрытие текущего окна
-
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/signUp.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait(); // чтобы подождал
+            StageHolder.getSignUpController().showAndWait();
         });
 
     }
 
     private void loginUser(String login, String password) {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        boolean result = dbHandler.login(login, password);
-        if (result) {
+        User user = dbHandler.login(login, password);
+        if (user != null) {
             System.out.println("Вы успешно вошли в систему!");
 
             loginButton.getScene().getWindow().hide(); // закрытие текущего окна
