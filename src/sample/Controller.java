@@ -62,7 +62,7 @@ public class Controller {
             loginButton.getScene().getWindow().hide(); // закрытие текущего окна
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/app.fxml"));
+            loader.setLocation(getClass().getResource("/sample/tour.fxml"));
 
             try {
                 loader.load();

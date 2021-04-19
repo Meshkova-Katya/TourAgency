@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController {
+public class Tour {
 
     @FXML
     private ResourceBundle resources;
@@ -45,7 +45,7 @@ public class HomeController {
         bookNow.setOnAction(event -> {
             bookNow.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("textApp.fxml"));
+            loader.setLocation(getClass().getResource("finish.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

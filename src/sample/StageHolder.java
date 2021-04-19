@@ -17,7 +17,7 @@ public class StageHolder {
     public static void load() {
         try {
             loginStage = new Stage();
-            Parent root = FXMLLoader.load(StageHolder.class.getResource("sample.fxml"));
+            Parent root = FXMLLoader.load(StageHolder.class.getResource("controller.fxml"));
             loginStage.setTitle("Тур агенство");
             loginStage.setScene(new Scene(root, 600, 600));
 
