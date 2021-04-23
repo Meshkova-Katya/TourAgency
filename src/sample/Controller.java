@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,6 +26,8 @@ public class Controller {
     @FXML
     private PasswordField passField;
 
+
+
     @FXML
     private Button signUpButton;
 
@@ -43,21 +43,24 @@ public class Controller {
             if (!login.equals("") && !password.equals("")) {
                 loginUser(login, password);
             } else {
-                System.out.println("Login and password is empty");
+                String str = "Поле с логином или паролем пустое";
+              errorInLoginOrPass(str);
             }
         });
 
-        signUpButton.setOnAction(event -> {
-            StageHolder.getSignUpController().showAndWait();
-        });
+        signUpButton.setOnAction(event -> StageHolder.getSignUpController().showAndWait());
 
     }
 
     private void loginUser(String login, String password) {
         DatabaseHandler dbHandler = new DatabaseHandler();
         User user = dbHandler.login(login, password);
-        if (user != null) {
-            System.out.println("Вы успешно вошли в систему!");
+
+        if (user == null) {
+         String str = "Такого пользователя не существует!";
+         errorInLoginOrPass(str);
+        } else {
+           dialogInfo();
 
             loginButton.getScene().getWindow().hide(); // закрытие текущего окна
 
@@ -75,9 +78,20 @@ public class Controller {
             stage.setScene(new Scene(root));
             stage.showAndWait(); // чтобы подождал
 
-        } else {
-            System.out.println("Такого пользователя не существует!");
         }
 
     }
+    private void  errorInLoginOrPass(String string) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText(string);
+        alert.showAndWait();
+    }
+    private void dialogInfo() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Информационный диалог");
+        alert.setHeaderText("Вы успешно вошли в систему!");
+        alert.showAndWait();
+    }
+
 }

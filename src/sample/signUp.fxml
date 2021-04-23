@@ -5,10 +5,10 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ToggleGroup?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignUpController">
     <children>
         <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
@@ -23,7 +23,7 @@
                 <TextField fx:id="loginField2" layoutX="74.0" layoutY="148.0" prefHeight="26.0" prefWidth="215.0" promptText="Логин" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
                 <TextField fx:id="surnameField" layoutX="337.0" layoutY="90.0" prefHeight="26.0" prefWidth="215.0" promptText="Фамилия" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
                 <TextField fx:id="locationField" layoutX="206.0" layoutY="310.0" prefHeight="26.0" prefWidth="215.0" promptText="Город" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
-            <RadioButton fx:id="radioMale" layoutX="199.0" layoutY="236.0" mnemonicParsing="false" text="Мужчина">
+            <RadioButton fx:id="radioMale" layoutX="199.0" layoutY="236.0" mnemonicParsing="false" selected="true" text="Мужчина">
                 <toggleGroup>
                     <ToggleGroup fx:id="group" />
                 </toggleGroup>

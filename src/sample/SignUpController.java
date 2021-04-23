@@ -1,23 +1,16 @@
 package sample;
 
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
-import javafx.scene.input.InputMethodTextRun;
-import javafx.stage.Stage;
 
 
 public class SignUpController {
-
-
 
 
     @FXML
@@ -44,7 +37,6 @@ public class SignUpController {
     @FXML
     private TextField locationField;
 
-
     @FXML
     private RadioButton radioMale;
 
@@ -54,41 +46,58 @@ public class SignUpController {
     @FXML
     private ToggleGroup group;
 
+    @FXML
+    private Label error;
 
     private void signUpNewUser() {
 
         DatabaseHandler dbHandler = new DatabaseHandler();
-        String firstName = nameField.getText();
-        String lastName = surnameField.getText();
-        String login = loginField2.getText();
-        String password = passField2.getText();
-        String location = locationField.getText();
+        String firstName = nameField.getText().trim();
+        String lastName = surnameField.getText().trim();
+        String login = loginField2.getText().trim();
+        String password = passField2.getText().trim();
+        String location = locationField.getText().trim();
+        if (!login.equals("") && !password.equals("") && !firstName.equals("") && !lastName.equals("") && !location.equals("")) {
 
-        String gender = "";
-        if (group.getSelectedToggle().equals(radioMale)) {
-            gender = "Мужской";
+            String gender = "";
+            if (group.getSelectedToggle().equals(radioMale)) {
+                gender = "Мужской";
+            } else {
+                gender = "Женский";
+            }
+
+
+            User user = new User(firstName, lastName, login, password, location, gender);
+
+
+            try {
+
+                dbHandler.signUpUser(user);
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         } else {
-            gender = "Женский";
-        }
-
-
-        User user = new User(firstName, lastName, login, password, location, gender);
-        try {
-            dbHandler.signUpUser(user);
-
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            String str = "Заполните все поля!";
+            errorInLoginOrPass(str);
         }
 
     }
+
     @FXML
     void initialize() {
         signUpLoginButton.setOnAction(event -> {
+
             signUpNewUser();
             StageHolder.getSignUpController().close();
         });
     }
-
+    private void errorInLoginOrPass(String string) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText(string);
+        alert.showAndWait();
+    }
 
 }

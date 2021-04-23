@@ -1,9 +1,12 @@
 package sample;
 
 
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 
 import static sample.Const.*;
+
 
 public class DatabaseHandler extends Configs {
 
@@ -24,8 +27,11 @@ public class DatabaseHandler extends Configs {
         String insert = "INSERT INTO " + USER_TABLE + " ( " + USER_FIRSTNAME + ", " + USER_LASTNAME + "," +
                 USER_LOGIN + ", " + USER_PASSWORD + ", " + USER_LOCATION + ", " + USER_GENDER + ") " + "VALUES (?, ?, ?, ?, ?, ?)";
 
+
         try {
+
             try (PreparedStatement prSt = getDbConnection().prepareStatement(insert)) {
+
                 prSt.setString(1, user.getFirstName());
                 prSt.setString(2, user.getLastName());
                 prSt.setString(3, user.getLogin());
@@ -33,13 +39,17 @@ public class DatabaseHandler extends Configs {
                 prSt.setString(5, user.getLocation());
                 prSt.setString(6, user.getGender());
 
-                prSt.executeUpdate(); // Добавляет в бд
-                System.out.println("Новый пользователь зарегистрирован!");
+                // Добавляет в бд
+                prSt.executeUpdate();
+
+                dialogInfo();
+
 
             }
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Пользователь с таким логином уже создан!");
-            return;
+            error();
+
+
         }
     }
 
@@ -49,6 +59,7 @@ public class DatabaseHandler extends Configs {
                 USER_LOGIN + "=? AND " + USER_PASSWORD + "=?";
 
         try (PreparedStatement prSt = getDbConnection().prepareStatement(select)) {
+
             prSt.setString(1, login);
             prSt.setString(2, password);
             ResultSet resultSet = prSt.executeQuery();
@@ -60,11 +71,25 @@ public class DatabaseHandler extends Configs {
                 user.setGender(USER_GENDER);
                 user.setLocation(resultSet.getString(USER_LOCATION));
                 USER = user;
-                break;
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return user;
+    }
+
+    private void dialogInfo() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Информационный диалог");
+        alert.setHeaderText("Новый пользователь зарегистрирован!");
+        alert.showAndWait();
+    }
+
+    private void error() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText("Пользователь с таким логином уже создан!");
+        alert.showAndWait();
     }
 }

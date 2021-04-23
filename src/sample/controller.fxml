@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+      <AnchorPane layoutY="86.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
          <children>
             <Label layoutX="232.0" layoutY="42.0" prefHeight="37.0" prefWidth="158.0" text="Авторизация">
                <font>
