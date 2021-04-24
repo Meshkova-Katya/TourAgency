@@ -49,12 +49,19 @@ public class Tour {
         bookNow.setOnAction(event -> {
 
 
-            bookNow.getScene().getWindow().hide(); // закрытие текущего окна
-            FXMLLoader loader = new FXMLLoader();// закрытие текущего окна
+            bookNow.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
             if (selection == null) {
 
-                loader.setLocation(getClass().getResource("/sample/finishTwo.fxml"));
+                loader.setLocation(getClass().getResource("finishTwo.fxml"));
 
+
+            } else {
+
+                loader.setLocation(getClass().getResource("finish.fxml"));
+
+
+            }
             try {
                 loader.load();
             } catch (IOException e) {
@@ -66,27 +73,10 @@ public class Tour {
             stage.setScene(new Scene(root));
             stage.showAndWait(); // чтобы подождал
 
-        } else {
-
-                loader.setLocation(getClass().getResource("/sample/finish.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait(); // чтобы подождал
-
-
-        }
         });
     }
 
-    }
+}
 
 
 
