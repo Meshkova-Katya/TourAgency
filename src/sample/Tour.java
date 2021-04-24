@@ -50,10 +50,10 @@ public class Tour {
 
 
             if (group.getSelectedToggle() == null) {
-                String str = "finishTwo.fxml";
+                String str = "/sample/finishTwo.fxml";
                 finishWindow(str);
             } else {
-                String str = "finish.fxml";
+                String str = "/sample/finish.fxml";
                 finishWindow(str);
             }
 
@@ -74,7 +74,7 @@ public class Tour {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root, 600, 600));
+        stage.setScene(new Scene(root));
         stage.showAndWait(); // чтобы подождал
 
     }
