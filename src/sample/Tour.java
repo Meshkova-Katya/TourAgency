@@ -45,38 +45,44 @@ public class Tour {
         radio2.setText("Франция - " + DatabaseHandler.USER.getLocation());
         radio3.setText("США - " + DatabaseHandler.USER.getLocation());
         radio4.setText("Бали - " + DatabaseHandler.USER.getLocation());
-        RadioButton selection = (RadioButton) group.getSelectedToggle();
+
         bookNow.setOnAction(event -> {
 
 
-            bookNow.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            if (selection == null) {
-
-                loader.setLocation(getClass().getResource("finishTwo.fxml"));
-
-
+            if (group.getSelectedToggle() == null) {
+                String str = "finishTwo.fxml";
+                finishWindow(str);
             } else {
-
-                loader.setLocation(getClass().getResource("finish.fxml"));
-
-
+                String str = "finish.fxml";
+                finishWindow(str);
             }
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait(); // чтобы подождал
 
         });
     }
 
+    private void finishWindow(String str) {
+        bookNow.getScene().getWindow().hide(); // закрытие текущего окна
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(str));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait(); // чтобы подождал
+
+    }
+
+
 }
+
+
 
 
 
