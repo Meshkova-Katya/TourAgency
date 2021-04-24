@@ -14,6 +14,7 @@ public class StageHolder {
     private static Stage signUpController;
 
 
+
     public static void load() {
         try {
             loginStage = new Stage();
@@ -28,6 +29,9 @@ public class StageHolder {
             signUpController.setScene(new Scene(root2));
 
 
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,5 +44,6 @@ public class StageHolder {
     public static Stage getSignUpController() {
         return signUpController;
     }
+
 
 }

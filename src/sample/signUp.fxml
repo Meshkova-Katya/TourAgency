@@ -15,7 +15,7 @@
             <children>
                 <TextField fx:id="nameField" layoutX="74.0" layoutY="90.0" prefHeight="26.0" prefWidth="215.0" promptText="Имя" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
                 <PasswordField fx:id="passField2" layoutX="337.0" layoutY="148.0" prefHeight="26.0" prefWidth="215.0" promptText="Пароль" style="-fx-background-color: #fafafa; -fx-border-color: silver;" />
-                <Button fx:id="signUpLoginButton" layoutX="206.0" layoutY="394.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="215.0" style="-fx-background-color: #FFA500; -fx-border-radius: 10;" text="Войти">
+                <Button fx:id="signUpLoginButton" layoutX="206.0" layoutY="394.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="215.0" style="-fx-background-color: #FFA500; -fx-border-radius: 10;" text="Зарегистрироваться">
                     <font>
                         <Font size="15.0" />
                     </font>

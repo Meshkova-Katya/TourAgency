@@ -46,8 +46,7 @@ public class SignUpController {
     @FXML
     private ToggleGroup group;
 
-    @FXML
-    private Label error;
+
 
     private void signUpNewUser() {
 

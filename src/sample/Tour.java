@@ -6,7 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +35,8 @@ public class Tour {
     private RadioButton radio2;
 
     @FXML
+    private ToggleGroup group;
+    @FXML
     private RadioButton radio4;
 
     @FXML
@@ -41,11 +45,16 @@ public class Tour {
         radio2.setText("Франция - " + DatabaseHandler.USER.getLocation());
         radio3.setText("США - " + DatabaseHandler.USER.getLocation());
         radio4.setText("Бали - " + DatabaseHandler.USER.getLocation());
-
+        RadioButton selection = (RadioButton) group.getSelectedToggle();
         bookNow.setOnAction(event -> {
-            bookNow.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("finish.fxml"));
+
+
+            bookNow.getScene().getWindow().hide(); // закрытие текущего окна
+            FXMLLoader loader = new FXMLLoader();// закрытие текущего окна
+            if (selection == null) {
+
+                loader.setLocation(getClass().getResource("/sample/finishTwo.fxml"));
+
             try {
                 loader.load();
             } catch (IOException e) {
@@ -55,7 +64,29 @@ public class Tour {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.showAndWait(); // чтобы подождал
+
+        } else {
+
+                loader.setLocation(getClass().getResource("/sample/finish.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait(); // чтобы подождал
+
+
+        }
         });
     }
-}
+
+    }
+
+
+
