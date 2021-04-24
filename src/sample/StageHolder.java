@@ -26,7 +26,7 @@ public class StageHolder {
             Parent root2 = FXMLLoader.load(StageHolder.class.getResource("signUp.fxml"));
             signUpController.initOwner(loginStage);
             signUpController.initModality(Modality.APPLICATION_MODAL);
-            signUpController.setScene(new Scene(root2));
+            signUpController.setScene(new Scene(root2, 600, 600));
 
 
 

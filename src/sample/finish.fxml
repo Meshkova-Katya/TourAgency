@@ -4,36 +4,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FinishController">
-    <children>
-        <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
-         <children>
-            <Label layoutX="237.0" layoutY="60.0" prefHeight="58.0" prefWidth="166.0" text="Поздравляем!">
-               <font>
-                  <Font name="Dubai Regular" size="25.0" />
-               </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="146.0" prefHeight="48.0" prefWidth="337.0" text="Вы успешно забронировали билеты.">
-               <font>
-                  <Font name="Dubai Regular" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="text" alignment="TOP_LEFT" layoutX="57.0" layoutY="205.0" prefHeight="106.0" prefWidth="544.0" text="В течении недели Вы можнете приобрести их в городе&#10; &#10;&#10;&#10; " textAlignment="JUSTIFY">
-               <font>
-                  <Font name="Dubai Regular" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="191.0" layoutY="345.0" text="Спасибо, что выбрали нас!">
-               <font>
-                  <Font name="Dubai Regular" size="20.0" />
-               </font>
-            </Label>
-         </children>
-        </AnchorPane>
-        <Label layoutX="217.0" layoutY="27.0" text="Лёгкий полёт">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FinishController">
+    <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
+        <Label layoutX="221.0" layoutY="52.0" text="Поздравляем!">
             <font>
-                <Font name="Dubai Regular" size="27.0" />
+                <Font name="Dubai Regular" size="25.0"/>
             </font>
         </Label>
-    </children>
+        <Label layoutX="144.0" layoutY="121.0" prefHeight="59.0" prefWidth="347.0"
+               text="Вы успешно забронировали билеты.">
+            <font>
+                <Font name="Dubai Regular" size="20.0"/>
+            </font>
+        </Label>
+        <Label fx:id="text" layoutX="20.0" layoutY="187.0" prefHeight="94.0" prefWidth="558.0"
+               text="В течении недели Вы можете приобрести их в аэропорту города" textAlignment="CENTER"
+               wrapText="true">
+            <font>
+                <Font name="Dubai Regular" size="20.0"/>
+            </font>
+        </Label>
+        <Label layoutX="179.0" layoutY="351.0" text="Спасибо, что выбрали нас!">
+            <font>
+                <Font name="Dubai Regular" size="20.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
+    <Label layoutX="217.0" layoutY="27.0" text="Лёгкий полёт">
+        <font>
+            <Font name="Dubai Regular" size="27.0"/>
+        </font>
+    </Label>
 </AnchorPane>

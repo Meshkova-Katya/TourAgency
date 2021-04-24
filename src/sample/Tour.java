@@ -74,7 +74,7 @@ public class Tour {
 
         Parent root = loader.getRoot();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        stage.setScene(new Scene(root, 600, 600));
         stage.showAndWait(); // чтобы подождал
 
     }
