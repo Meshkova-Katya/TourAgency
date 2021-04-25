@@ -12,8 +12,8 @@ public class StageHolder {
 
     private static Stage loginStage;
     private static Stage signUpController;
-
-
+    private static Stage finishStage;
+    private static Stage finishTwo;
 
     public static void load() {
         try {
@@ -29,8 +29,16 @@ public class StageHolder {
             signUpController.setScene(new Scene(root2, 600, 600));
 
 
+            finishStage = new Stage();
 
+            Parent root3 = FXMLLoader.load(StageHolder.class.getResource("finish.fxml"));
+            finishStage.initModality(Modality.APPLICATION_MODAL);
+            finishStage.setScene(new Scene(root3, 600, 600));
 
+            finishTwo = new Stage();
+            Parent root4 = FXMLLoader.load(StageHolder.class.getResource("finishTwo.fxml"));
+            finishTwo.initModality(Modality.APPLICATION_MODAL);
+            finishTwo.setScene(new Scene(root4, 600, 600));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -45,5 +53,11 @@ public class StageHolder {
         return signUpController;
     }
 
+    public static Stage getFinishStage() {
+        return finishStage;
+    }
 
+    public static Stage getFinishTwo() {
+        return finishTwo;
+    }
 }

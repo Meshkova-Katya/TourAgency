@@ -1,16 +1,14 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+
 import javafx.stage.Stage;
 
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,31 +48,16 @@ public class Tour {
 
 
             if (group.getSelectedToggle() == null) {
-                String str = "/sample/finishTwo.fxml";
-                finishWindow(str);
+                finishWindow(StageHolder.getFinishTwo());
             } else {
-                String str = "/sample/finish.fxml";
-                finishWindow(str);
+                finishWindow(StageHolder.getFinishStage());
             }
 
         });
     }
 
-    private void finishWindow(String str) {
+    private void finishWindow(Stage stage) {
         bookNow.getScene().getWindow().hide(); // закрытие текущего окна
-
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(str));
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
         stage.showAndWait(); // чтобы подождал
 
     }

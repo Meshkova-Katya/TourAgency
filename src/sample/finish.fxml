@@ -2,39 +2,52 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="600.0" style="-fx-background-color: #9932CC;" xmlns="http://javafx.com/javafx/15.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FinishController">
-    <AnchorPane layoutY="100.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #fafafa;">
-        <Label layoutX="221.0" layoutY="52.0" text="Поздравляем!">
-            <font>
-                <Font name="Dubai Regular" size="25.0"/>
-            </font>
-        </Label>
-        <Label layoutX="144.0" layoutY="121.0" prefHeight="59.0" prefWidth="347.0"
-               text="Вы успешно забронировали билеты.">
-            <font>
-                <Font name="Dubai Regular" size="20.0"/>
-            </font>
-        </Label>
-        <Label fx:id="text" layoutX="20.0" layoutY="187.0" prefHeight="94.0" prefWidth="558.0"
-               text="В течении недели Вы можете приобрести их в аэропорту города" textAlignment="CENTER"
-               wrapText="true">
-            <font>
-                <Font name="Dubai Regular" size="20.0"/>
-            </font>
-        </Label>
-        <Label layoutX="179.0" layoutY="351.0" text="Спасибо, что выбрали нас!">
-            <font>
-                <Font name="Dubai Regular" size="20.0"/>
-            </font>
-        </Label>
-    </AnchorPane>
-    <Label layoutX="217.0" layoutY="27.0" text="Лёгкий полёт">
-        <font>
-            <Font name="Dubai Regular" size="27.0"/>
-        </font>
-    </Label>
-</AnchorPane>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FinishController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="292.4" minHeight="10.0" prefHeight="104.39998474121091" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="509.20001831054685" minHeight="10.0" prefHeight="496.40001525878904" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9932CC;">
+            <children>
+                <Label layoutX="223.0" layoutY="30.0" text="Лёгкий полёт">
+                    <font>
+                        <Font name="Dubai Regular" size="25.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <children>
+                <Label layoutX="227.0" layoutY="63.0" text="Поздравляем!" textAlignment="CENTER">
+                    <font>
+                        <Font name="Dubai Regular" size="25.0" />
+                    </font>
+                </Label>
+                <Label layoutX="134.0" layoutY="142.0" text="Вы успешно забронировали билеты.">
+                    <font>
+                        <Font name="Dubai Regular" size="20.0" />
+                    </font>
+                </Label>
+                <Label fx:id="text" alignment="TOP_LEFT" layoutX="41.0" layoutY="212.0" prefHeight="98.0" prefWidth="518.0" text="В течении недели Вы можете приобрести их в аэропорту города " textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="Dubai Regular" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="186.0" layoutY="342.0" text="Спасибо, что выбрали нас!">
+                    <font>
+                        <Font name="Dubai Regular" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
